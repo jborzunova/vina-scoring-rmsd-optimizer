@@ -10,9 +10,9 @@ This repository contains code for customizing the scoring function of the dockin
 
 Traditional docking typically aims to rank compounds by predicted binding affinity. However, **it does not guarantee a native-like pose**, especially in single-ligand cases. While this is acceptable in large-scale virtual screening, it becomes limiting for tasks like fine-tuned docking against a specific binding site.
 
-This project shifts the goal: instead of maximizing docking score, it **minimizes RMSD** between the docked and native pose. This is done by **optimizing the 5 coefficients in the Vina scoring function** to yield better geometrical accuracy (not affinity estimation).
+This project shifts the goal: instead of maximizing docking score, it **minimizes RMSD** between the docked and native pose. This is done by **optimizing the coefficients in the Vina scoring function** to yield better geometrical accuracy (not affinity estimation).
 
-> ⚠️ Note: After scoring function customization, docking scores should no longer be interpreted as binding affinities.
+> ⚠️ Note: After scoring function customization, docking scores should no longer be interpreted as an estimation of binding affinities.
 
 ---
 
@@ -48,7 +48,7 @@ This project shifts the goal: instead of maximizing docking score, it **minimize
 
 
 Two example plots show the process of finding the best solution for a particular ligand and protein.  
-RMSD trend over visited local minima:
+RMSD trend over visited local minima is shown:
 
 - **Y-axis**: Mean RMSD for a set of ligands
 - **X-axis**: Index of visited local minimum during optimization
@@ -66,8 +66,7 @@ RMSD trend over visited local minima:
 2. The objective function:
    - Performs docking using Uni-Dock with initial common coefficients of Vina
    - Extracts the first docked pose
-   - Computes RMSD between this pose and the native one
-   - Returns RMSD (or mean RMSD for multi-ligand setups)
+   - Computes and returns RMSD between this pose and the native one (or mean RMSD for multi-ligand setups)
 
 3. The optimizer:
    - The objective function is passed to the SciPy optimizer to find the best solution
