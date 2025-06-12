@@ -61,24 +61,23 @@ RMSD trend over visited local minima:
 ## 🔧 How It Works
 
 1. User provides:
-   - A set of ligand files and protein files
+   - A set of ligand and protein files
 
-2. The optimizer:
+2. The objective function:
    - Performs docking using Uni-Dock with initial common coefficients of Vina
    - Extracts the first docked pose
    - Computes RMSD between this pose and the native one
-
-3. The objective function:
    - Returns RMSD (or mean RMSD for multi-ligand setups)
-   - Guides the optimizer (currently `differential_evolution`)
+
+3. The optimizer:
+   - The objective function is passed to the SciPy optimizer to find the best solution
 
 ---
 
 ## 📌 Notes
 
 - This codebase is under active development and will serve as the basis for a future publication.
-- Currently, **Differential Evolution** is implemented as the global search algorithm, as it provided the best convergence behavior on our datasets.
-- Future updates may include support for other global optimization methods.
+- Currently, **Differential Evolution and BFGS** are implemented as the global search algorithm, as it provided the best convergence behavior on our datasets.
 
 ---
 
