@@ -76,7 +76,7 @@ RMSD trend over visited local minima is shown:
 ## 📌 Notes
 
 - This codebase is under active development and will serve as the basis for a future publication.
-- Currently, **Differential Evolution and BFGS** are implemented as the global search algorithm, as it provided the best convergence behavior on our datasets.
+- Currently, **Differential Evolution and Dual Annealing** are implemented as the global search algorithm, as it provided the best convergence behavior on our datasets.
 
 ---
 
